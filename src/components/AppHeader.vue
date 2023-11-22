@@ -29,7 +29,7 @@
   };
   </script>
   
-  <style scoped>
-  /* Add your styles from header.css here */
+  <style scoped >
+
   </style>
   
