@@ -1,30 +1,29 @@
-// router/index.js
-import { createRouter, createWebHashHistory } from 'vue-router';
-import Index from '../views/Index.vue';
-import LoginPage from '../views/LoginPage.vue';
-import SignupPage from '../components/SignupPage.vue'; // Import the new signup page
+// Import Vue and Vue Router
+import { createRouter, createWebHistory } from 'vue-router';
 
-const routes = [
-    {
-        path: '/',
-        name: 'home',
-        component: Index,
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: LoginPage,
-    },
-    {
-        path: '/signup', // Add a new route for the signup page
-        name: 'signup',
-        component: SignupPage,
-    },
-];
+// Import your components
+import IndexPage from '@/views/Index.vue';
+import LoginPage from '@/views/LoginPage.vue';
 
+// Create a new router instance
 const router = createRouter({
-    history: createWebHashHistory(),
-    routes,
+    history: createWebHistory(),
+    routes: [
+        {
+            path: '/',
+            redirect: '/index',
+        },
+        {
+            path: '/index',
+            component: IndexPage,
+        },
+        {
+            path: '/login',
+            component: LoginPage,
+        },
+        // Add more routes as needed
+    ],
 });
 
+// Export the router instance
 export default router;

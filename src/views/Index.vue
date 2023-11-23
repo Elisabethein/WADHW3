@@ -1,16 +1,41 @@
 <template>
   <div class="index">
-    <h1>This is an index page</h1>
+    <section>
+      <AppPost />
+    </section>
   </div>
 </template>
 
 <script>
-//import Posts from './AppPosts.vue';
+import AppPost from '@/components/AppPost.vue';
 
 export default {
-  name: 'IndexPage', // Updated to a multi-word component name
+  name: 'IndexPage',
   components: {
-    //Posts,
+    AppPost,
+  },
+  data() {
+    return {
+      posts: [],
+    };
+  },
+  mounted() {
+    // Fetch posts data and update the posts array
+    fetch('posts.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          this.posts = data;
+        })
+        .catch(error => console.error('Error fetching data:', error));
   },
 };
 </script>
+
+<style scoped>
+/* Add your styles for the index page */
+</style>

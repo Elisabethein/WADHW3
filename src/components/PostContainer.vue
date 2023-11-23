@@ -1,8 +1,24 @@
 <template>
-    <div class="postContainer">
-      <!-- ... Your existing post container HTML ... -->
+  <div class="postContainer">
+    <div class="top-row">
+      <img :src="require('@/assets/' + post.profile_picture)" class="postImage" alt="User profile picture" />
+      <p class="regular">{{ formatDate(post.created_time) }}</p>
     </div>
-  </template>
+
+    <!-- Check if there is an image_url -->
+    <img v-if="post.image_url" :src="require('@/assets/' + post.image_url)" class="postImage" alt="Image" />
+
+    <p class="paragraph">{{ post.text }}</p>
+
+    <!-- Like button and like count -->
+    <div class="like-container">
+      <button class="like-button" @click="likePost">
+        <img :src="require('@/assets/heart.png')" alt="Like" />
+      </button>
+      <span class="like-count">{{ post.likes }}</span>
+    </div>
+  </div>
+</template>
   
   <script>
   export default {
@@ -15,12 +31,89 @@
         const year = date.getFullYear();
         return `${day}.${month}.${year}`;
       },
+
+      likePost() {
+        this.$emit('like', this.post);
+      },
     },
   };
   </script>
   
   <style scoped>
-  /* Add your styles from general.css here */
-  /* You may need to adapt or move some styles depending on your existing structure */
+  .postContainer {
+    padding: 5px;
+    max-width: 600px;
+    margin: 10px auto;
+    background-color: #D1DEDE;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+  }
+  .top-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px; /* Reduce margin bottom */
+  }
+
+  .postContainer img {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+  }
+
+  div + .postImage {
+    margin-top: 10px;
+    width: 100%;
+    height: auto;
+  }
+
+  div ~ p.paragraph {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 13px;
+  }
+
+  .top-row > p.regular {
+    margin-left: 10px;
+    color: darkgray;
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 15px;
+  }
+
+  .like-button {
+    width: 0.8cm;
+    height: 0.8cm;
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .like-button:hover {
+    border-radius: 30px;
+    background-color: transparent;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+  }
+
+  .like-button img {
+    margin-top: -7px;
+    margin-left: -7.6px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .like-container {
+    display: flex;
+    align-items: center;
+    margin-top: 5px; /* Reduce margin top */
+  }
+
+  .like-count {
+    margin-left: 5px;
+    font-size: 14px;
+    color: palevioletred;
+  }
   </style>
   
