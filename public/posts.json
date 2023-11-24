@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "text": "Just had the most delicious brunch at a new cafe in town. Their avocado toast is a must-try! 🥑☕ #Foodie",
     "author": "BrunchLover22",
     "created_time": "2023-11-03T10:30:00",
@@ -7,6 +8,7 @@
     "profile_picture": "pfp1.jpg"
   },
   {
+    "id": 2,
     "author": "NatureEnthusiast",
     "created_time": "2023-10-15T20:15:00",
     "likes": 12400,
@@ -14,6 +16,7 @@
     "image_url": "beach.jpg"
   },
   {
+    "id": 3,
     "text": "Xmas so sooooooooon! 7 Fridays until 25th Dec!!!!",
     "author": "Graduate2023",
     "created_time": "2023-08-21T22:20:00",
@@ -22,6 +25,7 @@
     "image_url": "home_alone.gif"
   },
   {
+    "id": 4,
     "text": "Spent the weekend exploring a hidden gem of a city...",
     "author": "BrunchLover22",
     "created_time": "2023-08-21T03:20:00",
@@ -29,6 +33,7 @@
     "profile_picture": "pfp1.jpg"
   },
   {
+    "id": 5,
     "text": "Waking up to a sunny morning, I feel refreshed and ready for new adventures!...",
     "author": "sarahjmaas",
     "created_time": "2023-07-10T12:00:00",
@@ -36,6 +41,7 @@
     "profile_picture": "pfp_cat.png"
   },
   {
+    "id": 6,
     "text": "Celebrating my graduation with friends and family. It's been a long journey, but we did it! 🎓 #Milestone",
     "author": "Graduate2023",
     "created_time": "2023-06-05T18:30:00",
@@ -43,6 +49,7 @@
     "profile_picture": "pfp2.jpg"
   },
   {
+    "id": 7,
     "text": "I absolutely owned the spotlight during my electrifying performance at the local open mic night. Music flows through my veins, and these are the moments that define my existence. \uD83C\uDFB5\uD83C\uDFA4 Embracing the #MusicianLife is not just a chddddd vdsv oice; it's a calling that resonates in every note, every lyric, and every soul I touch with my music.",
     "author": "BrunchLover22",
     "created_time": "2023-04-12T02:45:00",
@@ -50,6 +57,7 @@
     "profile_picture": "pfp1.jpg"
   },
   {
+    "id": 8,
     "text": "Enjoying a peaceful morning by the fireplace with a hot cup of cocoa. The crackling of the wood is pure comfort. ☕ #CozyVibes",
     "author": "Graduate2023",
     "created_time": "2023-04-12T06:45:00",
@@ -58,6 +66,7 @@
     "image_url": "tea.jpg"
   },
   {
+    "id": 9,
     "text": "Hiking to the summit was a challenge, but the view is breathtaking. The sense of accomplishment is worth it. ⛰️ #Adventure",
     "author": "NatureEnthusiast",
     "created_time": "2023-03-01T15:15:00",
@@ -65,6 +74,7 @@
     "profile_picture": "pfp3.jpg"
   },
   {
+    "id": 10,
     "text": "Starting a new chapter in life as I move to a different city for work. Exciting times ahead! 🌆 #NewBeginnings",
     "author": "Graduate2023",
     "created_time": "2023-02-09T11:55:00",

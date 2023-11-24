@@ -33,7 +33,13 @@
       },
 
       likePost() {
-        this.$emit('like', this.post);
+        // Ensure that this.post.id is defined
+        if (this.post.id !== undefined) {
+          // Emit the 'like' event with the entire post object
+          this.$emit('like', this.post.id);
+        } else {
+          console.error('Post ID is undefined:', this.post);
+        }
       },
     },
   };

@@ -1,9 +1,9 @@
 <template>
-  <section>
+  <section class="app-post-section">
     <div id="app-post">
       <PostContainer v-for="post in posts" :key="post.id" :post="post" @like="handleLike(post)" />
-      <button @click="resetAllLikes" class="reset-likes-btn">Reset All Likes</button>
     </div>
+    <button @click="resetAllLikes" class="reset-likes-btn">Reset All Likes</button>
   </section>
 </template>
 
@@ -51,8 +51,33 @@ export default {
 </script>
 
 <style scoped>
+.app-post-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
 
 .reset-likes-btn {
+  margin-top: 20px;
+  padding: 10px 15px;
+  text-align: center;
+  display: block;
+  color: dimgray;
+  font-size: 0.99em;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid darkcyan;
+  background-color: #D9F5F5;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  opacity: 0.95;
+}
 
+.reset-likes-btn:hover {
+  background-color: darkcyan;
+  color: white;
+  border-radius: 25px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <p>&copy; {{ currentYear }} All rights reserved.</p>
+    <p class="footer-text">&copy; {{ currentYear }} All rights reserved.</p>
   </div>
 </template>
 
@@ -17,6 +17,9 @@ export default {
 <style scoped>
 /* Add your styles for the footer */
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-top: 0.1em;
   padding-bottom: 0.1em;
   background-color: #D9F5F5;
@@ -29,5 +32,8 @@ export default {
   border-radius: 5px;
   margin: 0 10%;
   opacity: 95%;
+}
+.footer-text {
+  margin: 0; /* Remove default margin for <p> */
 }
 </style>

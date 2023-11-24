@@ -1,7 +1,7 @@
 <template>
-  <div class="login">
+  <div class="signup">
     <section>
-      <p><strong>Login</strong></p>
+      <p><strong>Create a new account</strong></p>
       <form @submit.prevent="login" class="login-form">
         <label>
           Email
@@ -25,10 +25,10 @@
           </ul>
         </div>
 
-        <button type="submit" :disabled="!isPasswordValid">Login</button>
+        <button type="submit" :disabled="!isPasswordValid">Signup</button>
       </form>
       <p>
-        Don't have an account? <router-link to="/signup">Sign up</router-link>
+        Already have an account? <router-link to="/login">Login</router-link>
       </p>
     </section>
   </div>
@@ -36,7 +36,7 @@
 
 <script>
 export default {
-  name: 'LoginPage',
+  name: 'SignupPage',
   data() {
     return {
       email: '',
@@ -65,7 +65,7 @@ export default {
 
       if (this.isPasswordValid) {
         // Implement your login logic here
-        console.log('Login:', this.email, this.password);
+        console.log('Signup:', this.email, this.password);
         // Example: redirect to the home page after successful login
         this.$router.push('/');
       }
@@ -77,9 +77,10 @@ export default {
 };
 </script>
 
+
 <style scoped>
-/* Add your styles for the login page */
-.login {
+/* Add your styles for the signup page */
+.signup {
   display: flex;
   justify-content: center;
   align-items: center;

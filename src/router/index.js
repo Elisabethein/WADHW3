@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 // Import your components
 import IndexPage from '@/views/Index.vue';
 import LoginPage from '@/views/LoginPage.vue';
+import SignupPage from "@/views/SignupPage.vue";
 
 // Create a new router instance
 const router = createRouter({
@@ -21,6 +22,11 @@ const router = createRouter({
             path: '/login',
             component: LoginPage,
         },
+        {
+            path: '/signup',
+            component: SignupPage,
+        },
+
         // Add more routes as needed
     ],
 });
