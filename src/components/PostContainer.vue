@@ -12,7 +12,13 @@
 
     <!-- Like button and like count -->
     <div class="like-container">
-      <button class="like-button" @click="likePost">
+      <button
+          class="like-button"
+          @mousedown="startPress"
+          @mouseup="endPress"
+          @click="likePost"
+          :class="{ 'pressed': isPressed, 'liked': isLiked }"
+      >
         <img :src="require('@/assets/heart.png')" alt="Like" />
       </button>
       <span class="like-count">{{ post.likes }}</span>
@@ -23,6 +29,12 @@
   <script>
   export default {
     props: ['post'],
+    data() {
+      return {
+        isLiked: false,
+        isPressed: false,
+      };
+    },
     methods: {
       formatDate(inputDate) {
         const date = new Date(inputDate);
@@ -40,6 +52,13 @@
         } else {
           console.error('Post ID is undefined:', this.post);
         }
+      },
+      startPress() {
+        this.isPressed = true;
+      },
+
+      endPress() {
+        this.isPressed = false;
       },
     },
   };
@@ -104,8 +123,8 @@
   }
 
   .like-button img {
-    margin-top: -7px;
-    margin-left: -7.6px;
+    margin-top: 1px;
+    margin-left: -3.3px;
     width: 25px;
     height: 25px;
   }
@@ -121,5 +140,15 @@
     font-size: 14px;
     color: palevioletred;
   }
+
+  .like-button.pressed img{
+    margin-left: -2.2px;
+    margin-top: 2px;
+    width: 0.6cm; /* Set the larger width */
+    height: 0.6cm; /* Set the larger height */
+    /* Add any other styles for the larger size */
+    transition: width 0.1s, height 0.1s;
+  }
+
   </style>
   
