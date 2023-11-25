@@ -43,7 +43,6 @@
         const year = date.getFullYear();
         return `${day}.${month}.${year}`;
       },
-
       likePost() {
         // Ensure that this.post.id is defined
         if (this.post.id !== undefined) {
@@ -53,10 +52,9 @@
           console.error('Post ID is undefined:', this.post);
         }
       },
-      startPress() {
+      startPress() {//to modify the size of the heart img
         this.isPressed = true;
       },
-
       endPress() {
         this.isPressed = false;
       },
@@ -124,7 +122,7 @@
 
   .like-button img {
     margin-top: 1px;
-    margin-left: -3.3px;
+    margin-left: -3.4px;
     width: 25px;
     height: 25px;
   }
@@ -141,13 +139,8 @@
     color: palevioletred;
   }
 
-  .like-button.pressed img{
-    margin-left: -2.2px;
-    margin-top: 2px;
-    width: 0.6cm; /* Set the larger width */
-    height: 0.6cm; /* Set the larger height */
-    /* Add any other styles for the larger size */
-    transition: width 0.1s, height 0.1s;
+  .like-button.pressed img {
+    transform: scale(0.8);
   }
 
   </style>

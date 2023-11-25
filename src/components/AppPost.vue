@@ -3,7 +3,7 @@
     <div id="app-post">
       <PostContainer v-for="post in posts" :key="post.id" :post="post" @like="handleLike(post)" />
     </div>
-    <button @click="resetAllLikes" class="reset-likes-btn">Reset All Likes</button>
+    <button @click="resetAllLikes" :class="{ 'pressed': isResetPressed }" class="reset-likes-btn">Reset All Likes</button>
   </section>
 </template>
 
@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       posts: [],
+      isResetPressed: false,
     };
   },
   mounted() {
@@ -45,6 +46,10 @@ export default {
       this.posts.forEach(post => {
         post.likes = 0;
       });
+      this.isResetPressed = true; // Set the pressed state
+      setTimeout(() => {
+        this.isResetPressed = false; // Reset the pressed state after a short delay
+      }, 100);
     },
   },
 };
@@ -56,11 +61,12 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding-bottom: 20px;
+  padding-bottom: 75px;
+  padding-top: 70px;
 }
 
 .reset-likes-btn {
-  margin-top: 20px;
+  margin: 10px 10px;
   padding: 10px 15px;
   text-align: center;
   display: block;
@@ -80,4 +86,9 @@ export default {
   color: white;
   border-radius: 25px;
 }
+
+.reset-likes-btn.pressed {
+  transform: scale(0.9);
+}
+
 </style>

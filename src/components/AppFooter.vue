@@ -30,10 +30,10 @@ export default {
   bottom: 0;
   width: 80%;
   border-radius: 5px;
-  margin: 0 10%;
+  margin: 0.5% 10%;
   opacity: 95%;
 }
 .footer-text {
-  margin: 0; /* Remove default margin for <p> */
+  color: dimgray;
 }
 </style>

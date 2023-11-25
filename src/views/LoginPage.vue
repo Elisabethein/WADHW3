@@ -1,7 +1,9 @@
 <template>
-  <div class="login">
+  <body>
+
     <section>
-      <p><strong>Login</strong></p>
+      <div class="container">
+        <p class="single"><br>{{ showSignUpText ? 'Sign up' : 'Log in' }}</p>
       <form @submit.prevent="login" class="login-form">
         <label>
           Email
@@ -13,25 +15,30 @@
           <input v-model="password" type="password" placeholder="Password" required />
         </label>
 
+
         <div v-if="!isPasswordValid" class="password-validation">
-          <p>Password is not valid. Please follow these conditions:</p>
+          <p class="paragraph">Password is not valid.<br> Please follow these conditions:</p>
           <ul>
             <li v-if="!passwordRequirements[0].isValid">At least 8 characters and less than 15 characters</li>
-            <li v-if="!passwordRequirements[1].isValid">At least one uppercase alphabet character</li>
-            <li v-if="!passwordRequirements[2].isValid">At least two lowercase alphabet characters</li>
-            <li v-if="!passwordRequirements[3].isValid">At least one numeric value</li>
-            <li v-if="!passwordRequirements[4].isValid">Should start with an uppercase alphabet</li>
-            <li v-if="!passwordRequirements[5].isValid">Should include the character “_”</li>
+            <li v-if="!passwordRequirements[1].isValid">At least one uppercase letter</li>
+            <li v-if="!passwordRequirements[2].isValid">At least two lowercase letters</li>
+            <li v-if="!passwordRequirements[3].isValid">At least one number</li>
+            <li v-if="!passwordRequirements[4].isValid">Start with an uppercase letter</li>
+            <li v-if="!passwordRequirements[5].isValid">Include the character “_”</li>
           </ul>
         </div>
 
         <button type="submit" :disabled="!isPasswordValid">Login</button>
       </form>
-      <p>
-        Don't have an account? <router-link to="/signup">Sign up</router-link>
-      </p>
+        <p class="single">
+          <span v-if="showSignUpText">Already have an account? </span>
+          <span class="links" @click="toggleSignUpText" v-if="showSignUpText">Log in</span>
+          <span v-else>Don't have an account? </span>
+          <span class="links" @click="toggleSignUpText" v-if="!showSignUpText">Sign up</span>
+        </p></div>
     </section>
-  </div>
+
+  </body>
 </template>
 
 <script>
@@ -50,6 +57,7 @@ export default {
         { name: 'start with an uppercase character', regex: /^[A-Z].*/ },
         { name: 'include the character “_"', regex: /^(?=.*_)/ },
       ],
+      showSignUpText: false,
     };
   },
   methods: {
@@ -70,6 +78,9 @@ export default {
         this.$router.push('/');
       }
     },
+    toggleSignUpText() {
+      this.showSignUpText = !this.showSignUpText;
+    },
   },
   watch: {
     password: 'validatePassword',
@@ -79,16 +90,48 @@ export default {
 
 <style scoped>
 /* Add your styles for the login page */
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+
+* {
+  font-family: monaco, Consolas, Lucida Console, monospace;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding-bottom: 300px;
+  background-color: #f0f0f0;
+  background-image: url('https://images.template.net/96416/blue-watercolor-background-d6g5y.jpg'); /* Replace 'your-image-url.jpg' with the URL of your image */ /* Prevent image from repeating */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+p.single {
+  line-height: 1.5;
+  text-align: center;
+  text-justify: inter-word;
+}
+
+.container {
+  padding: 10px 10px 10px;
+  max-width: 600px;
+  margin: 90px auto 75px;
+  background-color: #D1DEDE;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 section {
-  padding: 20px;
+  padding-top: 20px;
   text-align: center;
+}
+
+.links {
+  color: #007BFF;
+}
+
+.links:hover {
+  color: #0056b3;
 }
 
 .login-form {
@@ -99,8 +142,10 @@ section {
 }
 
 label {
-  margin-bottom: 10px;
+  text-align: center;
   display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
 input {
@@ -108,10 +153,6 @@ input {
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-}
-
-.button-wrapper {
-  position: relative;
 }
 
 button {
@@ -128,21 +169,11 @@ button:hover {
   background-color: #0056b3;
 }
 
-p {
-  margin-top: 20px;
-}
-
-.password-validation {
+.password-validation p, .password-validation li {
   margin-top: 10px;
   color: red;
+  font-size: 11px;
+  text-align: justify;
 }
 
-.password-validation p {
-  margin-bottom: 5px;
-}
-
-.password-validation ul {
-  padding-left: 20px;
-  list-style-type: disc;
-}
 </style>

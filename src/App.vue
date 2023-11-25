@@ -24,10 +24,14 @@ export default {
   font-size: 16px;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
   background-image: url('~@/assets/background.png');
+  background-color: #f0f0f0;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+body {
+  margin: 0;
 }
 </style>
