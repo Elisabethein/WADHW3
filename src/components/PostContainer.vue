@@ -27,6 +27,8 @@
 </template>
   
   <script>
+  import { mapActions } from 'vuex';
+
   export default {
     props: ['post'],
     data() {
@@ -36,6 +38,7 @@
       };
     },
     methods: {
+      ...mapActions(['likePost']),
       formatDate(inputDate) {
         const date = new Date(inputDate);
         const day = date.getDate().toString().padStart(2, '0');

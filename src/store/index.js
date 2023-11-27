@@ -1,34 +1,31 @@
 import { createStore } from 'vuex';
 
 const store = createStore({
-    state: {
-        // Your state variables go here
-        user: null,
-        // Add other state properties as needed
+  state: {
+    posts: [],
+  },
+  mutations: {
+    setPosts(state, posts) {
+      state.posts = posts;
     },
-    mutations: {
-        // Mutations are responsible for changing the state
-        setUser(state, user) {
-            state.user = user;
-        },
-        // Add other mutations as needed
+  },
+  actions: {
+    async fetchPosts({ commit }) {
+      try {
+        const response = await fetch('https://gist.githubusercontent.com/Elisabethein/b38c158240c88f0620dcd42d76d8bf90/raw/6e4f6335e06bfdaa1fee933326af001f74a98fc7/wad_posts.json');
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const posts = await response.json();
+
+        commit('setPosts', posts);
+      } catch (error) {
+        console.error('Error fetching posts:', error.message);
+      }
     },
-    actions: {
-        // Actions are where you perform asynchronous operations and commit mutations
-        login({ commit }, user) {
-            // Perform login logic (e.g., API request)
-            // Once the login is successful, commit the setUser mutation
-            commit('setUser', user);
-        },
-        // Add other actions as needed
-    },
-    getters: {
-        // Getters are used to retrieve state properties with some kind of processing
-        isLoggedIn(state) {
-            return !!state.user; // Convert to a boolean
-        },
-        // Add other getters as needed
-    },
+  },
 });
 
 export default store;

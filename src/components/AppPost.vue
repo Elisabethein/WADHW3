@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import PostContainer from './PostContainer.vue';
+import PostContainer from '@/components/PostContainer.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'AppPost',
@@ -17,20 +18,14 @@ export default {
   },
   data() {
     return {
-      posts: [],
       isResetPressed: false,
     };
   },
-  mounted() {
-    // Fetch data and update posts
-    fetch('posts.json')
-        .then(response => response.json())
-        .then(data => {
-          this.posts = data;
-          // Emit an event to notify child components that posts are loaded
-          this.$emit('posts-loaded', data);
-        })
-        .catch(error => console.error('Error fetching data:', error));
+  computed: {
+    ...mapState(['posts']),
+    fetchedPosts() {
+      return this.posts;
+    },
   },
   methods: {
     handleLike(clickedPost) {
@@ -41,7 +36,6 @@ export default {
         this.posts[index] = { ...this.posts[index], likes: this.posts[index].likes + 1 };
       }
     },
-
     resetAllLikes() {
       this.posts.forEach(post => {
         post.likes = 0;
