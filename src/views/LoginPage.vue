@@ -98,7 +98,7 @@ export default {
 
 body {
   margin: 0;
-  padding-bottom: 400px;
+  padding-bottom: 1000px;
   background-color: #f0f0f0;
   background-image: url('https://images.template.net/96416/blue-watercolor-background-d6g5y.jpg'); /* Replace 'your-image-url.jpg' with the URL of your image */ /* Prevent image from repeating */
   background-attachment: fixed;
